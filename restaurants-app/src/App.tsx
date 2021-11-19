@@ -8,6 +8,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Dashboard from './pages/Dasboard/Dashboard';
 import RestaurantsList from './pages/RestaurantsList/RestaurantsList';
+import RestaurantDetail from './pages/RestaurantDetail/RestaurantDetail';
 import './styles/main.scss';
 
 const App = function () {
@@ -18,6 +19,7 @@ const App = function () {
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/restaurants" element={<RestaurantsList />} />
+          <Route path="/restaurant/:restaurantId" element={<RestaurantDetail />} />
         </Routes>
       </BrowserRouter>
       <Footer />

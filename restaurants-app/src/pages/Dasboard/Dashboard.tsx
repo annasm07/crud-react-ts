@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import RestaurantCard from '../../components/RestaurantCard/RestaurantCard';
 import { loadRestaurants } from '../../redux/actions/actionCreators';
+import Restaurant from '../../interfaces/restaurantInterface';
+import './styles.scss';
 
 const Dashboard = function () {
   const dispatch = useDispatch();
@@ -13,9 +16,14 @@ const Dashboard = function () {
   return (
     <>
       <h2>Best Restaurants in Madrid</h2>
-      {restaurants.length && (
-        restaurants.map((restaurant:any) => <p key={restaurant.name}>{restaurant.name}</p>)
-      )}
+      <ul className="restaurant-list">
+        {restaurants.length && (
+          restaurants.map((restaurant:Restaurant) => (
+            <RestaurantCard key={restaurant.id} restaurant={restaurant} />
+          ))
+        )}
+      </ul>
+
     </>
   );
 };
