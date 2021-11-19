@@ -1,0 +1,39 @@
+@import '../../styles/colors.scss';
+
+.restaurant-card{
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 28px;
+    justify-content: center;
+    list-style: none;
+    margin: 3% 0;
+    width: 300px;
+    &__item{
+        position: relative;
+        border-radius: 40px;
+        overflow: hidden;
+        height: 200px;
+        display: inline-block;
+        margin: 1%;
+        text-align: center;
+        width: 300px;
+        color: $dark-color;
+        .restaurant-card__name{
+            position: absolute;
+            padding: 20px;
+            top:40%;
+            left: 20px;
+            text-align: left;
+            visibility: hidden;
+            color: $dark-color;
+            z-index: 2;
+            font-weight: 500;
+        }
+        img{
+            height: 200px;
+            position: absolute;
+            left:0;
+            top:0;
+        }
+    }
+}
