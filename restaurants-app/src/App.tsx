@@ -8,10 +8,11 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Dashboard from './pages/Dasboard/Dashboard';
 import RestaurantsList from './pages/RestaurantsList/RestaurantsList';
+import './styles/main.scss';
 
 const App = function () {
   return (
-    <div className="App">
+    <div>
       <BrowserRouter>
         <Header />
         <Routes>

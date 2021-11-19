@@ -1,0 +1,23 @@
+@import '../../styles/main.scss';
+@import '../../styles/colors.scss';
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    background-color: #ECECEC;
+    color: $dark-color;
+    padding: 10px 30px;
+    &__navigation{
+        width: 30%;
+        display: flex;
+        justify-content: space-around;
+        &--link{
+            text-decoration: none;
+            color: $dark-color;
+        }
+        &--link:hover{
+            color: $extra-color-dark;
+        }
+    }
+}
