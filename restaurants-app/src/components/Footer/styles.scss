@@ -1,0 +1,10 @@
+@import '../../styles/main.scss';
+@import '../../styles/colors.scss';
+
+.footer{
+    background-color: $extra-color-dark;
+    position:fixed;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+}

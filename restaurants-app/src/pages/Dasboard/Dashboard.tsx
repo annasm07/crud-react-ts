@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { loadRestaurants } from '../../redux/actions/actionCreators';
 
 const Dashboard = function () {
@@ -14,7 +15,13 @@ const Dashboard = function () {
     <>
       <h2>Best Restaurants in Madrid</h2>
       {restaurants.length && (
-        restaurants.map((restaurant:any) => <p key={restaurant.name}>{restaurant.name}</p>)
+        restaurants.map((restaurant:any) => (
+          <div key={restaurant.id}>
+            <Link to={`/restaurant/${restaurant.id}`}>
+              <p>{restaurant.name}</p>
+            </Link>
+          </div>
+        ))
       )}
     </>
   );
