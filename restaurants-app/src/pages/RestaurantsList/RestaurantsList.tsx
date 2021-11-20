@@ -2,10 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import Restaurant from '../../interfaces/restaurantInterface';
 import RestaurantCard from '../../components/RestaurantCard/RestaurantCard';
-import '../Dasboard/styles.scss';
 
 const RestaurantsList = function () {
-  // const dispatch = useDispatch();
   const allRestaurants = useSelector((store:any) => store.restaurants);
 
   return (

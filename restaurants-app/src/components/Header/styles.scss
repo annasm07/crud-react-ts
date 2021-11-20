@@ -14,9 +14,9 @@
         &--link{
             text-decoration: none;
             color: $dark-color;
-        }
-        &--link:hover{
-            color: $extra-color-dark;
+            &:hover{
+                color: $extra-color-dark;
+            }
         }
     }
 }

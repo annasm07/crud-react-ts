@@ -16,7 +16,7 @@ const Dashboard = function () {
 
   return (
     <>
-      <h2>Best Restaurants in Madrid</h2>
+      <h2 className="title">Best Restaurants in Madrid</h2>
       <ul className="restaurant-list">
         {dashborardRestaurants.length && (
           dashborardRestaurants.map((restaurant:Restaurant) => (
