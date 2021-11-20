@@ -9,6 +9,7 @@ import Footer from './components/Footer/Footer';
 import Dashboard from './pages/Dasboard/Dashboard';
 import RestaurantsList from './pages/RestaurantsList/RestaurantsList';
 import RestaurantDetail from './pages/RestaurantDetail/RestaurantDetail';
+import Favorites from './pages/Favorites/Favorites';
 import './styles/main.scss';
 
 const App = function () {
@@ -20,6 +21,7 @@ const App = function () {
           <Route path="/" element={<Dashboard />} />
           <Route path="/restaurants" element={<RestaurantsList />} />
           <Route path="/restaurant/:restaurantId" element={<RestaurantDetail />} />
+          <Route path="/favorites" element={<Favorites />} />
         </Routes>
       </BrowserRouter>
       <Footer />

@@ -9,6 +9,7 @@ const Header = function () {
       <nav className="header__navigation">
         <Link to="/" className="header__navigation--link">Home</Link>
         <Link to="/restaurants" className="header__navigation--link">Find a Restaurant</Link>
+        <Link to="/favorites" className="header__navigation--link">My favorites</Link>
       </nav>
     </header>
   );
