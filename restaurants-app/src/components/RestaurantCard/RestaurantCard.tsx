@@ -14,7 +14,11 @@ const RestaurantCard = function ({ restaurant } : {restaurant:Restaurant}) {
       <Link to={`/restaurant/${restaurant.id}`} className="restaurant-card__item">
         <img src={restaurant.image_url} alt={restaurant.name} className="restaurant-card__img" />
         <div className="restaurant-card__information">
-          <span className="information__name">{restaurant.name}</span>
+          <span className="information__name">
+            {restaurant.name}
+            {' '}
+            {restaurant.id}
+          </span>
           <span className="information__review">{calculateMedium(restaurant.reviews)}</span>
         </div>
       </Link>

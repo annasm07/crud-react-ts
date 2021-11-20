@@ -7,7 +7,8 @@ import './styles.scss';
 
 const Dashboard = function () {
   const dispatch = useDispatch();
-  const restaurants = useSelector((store:any) => store.restaurants);
+  const allRestaurants = useSelector((store:any) => store.restaurants);
+  const dashborardRestaurants = allRestaurants.slice(0, 4);
 
   useEffect(() => {
     dispatch(loadRestaurants());
@@ -17,8 +18,8 @@ const Dashboard = function () {
     <>
       <h2>Best Restaurants in Madrid</h2>
       <ul className="restaurant-list">
-        {restaurants.length && (
-          restaurants.map((restaurant:Restaurant) => (
+        {dashborardRestaurants.length && (
+          dashborardRestaurants.map((restaurant:Restaurant) => (
             <RestaurantCard key={restaurant.id} restaurant={restaurant} />
           ))
         )}
