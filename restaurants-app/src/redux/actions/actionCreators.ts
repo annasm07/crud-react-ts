@@ -3,9 +3,11 @@ import Restaurant from '../../interfaces/restaurantInterface';
 import { AppDispatch } from '../store';
 import actionTypes from './actionTypes';
 
+const apiURL = process.env.REACT_APP_APIURL;
+
 export function loadRestaurants() {
   return async (dispatch: AppDispatch) => {
-    const { data } = await axios('http://localhost:3004/restaurants');
+    const { data } = await axios(`${apiURL}/restaurants`);
     dispatch({
       type: actionTypes.LOAD_ALL_RESTAURANTS,
       restaurants: data,
@@ -15,7 +17,7 @@ export function loadRestaurants() {
 
 export function loadFavorites() {
   return async (dispatch: AppDispatch) => {
-    const { data } = await axios('http://localhost:3004/favorites');
+    const { data } = await axios(`${apiURL}/favorites`);
     dispatch({
       type: actionTypes.LOAD_ALL_FAVORITES,
       favorites: data,
@@ -25,7 +27,7 @@ export function loadFavorites() {
 
 export function addToFavorites(restaurant: Restaurant) {
   return async (dispatch: AppDispatch) => {
-    const { data } = await axios.post('http://localhost:3004/favorites', restaurant);
+    const { data } = await axios.post(`${apiURL}/favorites`, restaurant);
     dispatch({
       type: actionTypes.ADD_TO_FAVORITES,
       newFavorite: data,
@@ -35,7 +37,7 @@ export function addToFavorites(restaurant: Restaurant) {
 
 export function deleteFromFavorites(id:number) {
   return async (dispatch: AppDispatch) => {
-    await axios.delete(`http://localhost:3004/favorites/${id}`);
+    await axios.delete(`${apiURL}/favorites/${id}`);
     dispatch({
       type: actionTypes.DELETE_FROM_FAVORITES,
       id,
