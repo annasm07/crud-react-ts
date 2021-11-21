@@ -2,16 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Restaurant from '../../interfaces/restaurantInterface';
-import emptyHeart from '../../assets/empty-heart.svg';
-import fullHeart from '../../assets/full-heart.svg';
 import {
-  addToFavorites,
-  deleteFromFavorites,
   updateRestaurant,
   updateRestaurantFavs,
 } from '../../redux/actions/actionCreators';
 import './styles.scss';
 import calculateMedium from '../../services/calculateMedium';
+import FavoritesButton from '../../components/FavoriteButton/FavoriteButton';
 
 const RestaurantDetail = function () {
   const dispatch = useDispatch();
@@ -35,14 +32,6 @@ const RestaurantDetail = function () {
     setreviewsMedium(Number(calculateMedium(currentRestaurant[0]?.reviews)));
   }, [restaurants]);
 
-  function changeFavourite(restID:number) {
-    if (isFavorite(restID)) {
-      dispatch(deleteFromFavorites(restID));
-    } else {
-      dispatch(addToFavorites(currentRestaurant[0]));
-    }
-  }
-
   const handleReviewSent = (formReview: string) => {
     const updatedRestaurant = {
       ...currentRestaurant[0], reviews: [...currentRestaurant[0].reviews, Number(formReview)],
@@ -55,18 +44,7 @@ const RestaurantDetail = function () {
     <>
       <div className="heading">
         <span className="heading__title">{currentRestaurant[0]?.name}</span>
-        <button
-          className="heart-button"
-          type="button"
-          onClick={() => changeFavourite(currentRestaurant[0].id)}
-        >
-          <figure>
-            <img
-              src={isFavorite(currentRestaurant[0].id) ? fullHeart : emptyHeart}
-              alt="favorite-icon"
-            />
-          </figure>
-        </button>
+        <FavoritesButton restaurant={currentRestaurant[0]} />
       </div>
       <div className="details-container">
         <img
@@ -80,6 +58,15 @@ const RestaurantDetail = function () {
             <li><span>{currentRestaurant[0]?.food_type}</span></li>
             <li>{currentRestaurant[0]?.address.map((item:string) => <span>{item}</span>)}</li>
             <li><span>{reviewsMedium}</span></li>
+            <li>
+              {/* {' '}
+            <input
+              className="search-input"
+              type="text"
+              placeholder="Add a personal comment..."
+              onChange={(event) => handleCommentChangeInput(event)}
+            /> */}
+            </li>
           </ul>
           <form action="#" method="get">
 
