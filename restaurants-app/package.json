@@ -37,6 +37,13 @@
       "react-app/jest"
     ]
   },
+  "jest": {
+    "coveragePathIgnorePatterns" : [
+      "src/redux/store", 
+      "src/index.tsx", 
+      "src/reportWebVitals.ts"
+    ]
+  },
   "browserslist": {
     "production": [
       ">0.2%",

@@ -7,16 +7,14 @@ import {
   addToFavorites,
   deleteFromFavorites,
 } from '../../redux/actions/actionCreators';
+import isFavorite from '../../services/isFavorite';
 
 const FavoritesButton = function ({ restaurant } : {restaurant:Restaurant}) {
   const favorites = useSelector((store:any) => store.favorites);
   const dispatch = useDispatch();
 
-  function isFavorite(restID:number) {
-    return favorites.some(({ id }:{id:number}) => id === restID);
-  }
   function changeFavourite(restID:number) {
-    if (isFavorite(restID)) {
+    if (isFavorite(restID, favorites)) {
       dispatch(deleteFromFavorites(restID));
     } else {
       dispatch(addToFavorites(restaurant));
@@ -30,7 +28,7 @@ const FavoritesButton = function ({ restaurant } : {restaurant:Restaurant}) {
     >
       <figure>
         <img
-          src={isFavorite(restaurant.id) ? fullHeart : emptyHeart}
+          src={isFavorite(restaurant.id, favorites) ? fullHeart : emptyHeart}
           alt="favorite-icon"
         />
       </figure>
