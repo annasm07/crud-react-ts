@@ -6,6 +6,7 @@ import Dashboard from './pages/Dasboard/Dashboard';
 import RestaurantsList from './pages/RestaurantsList/RestaurantsList';
 import RestaurantDetail from './pages/RestaurantDetail/RestaurantDetail';
 import Favorites from './pages/Favorites/Favorites';
+import NotFound from './components/NotFound/NotFound';
 import './styles/main.scss';
 
 const App = function () {
@@ -21,6 +22,7 @@ const App = function () {
             element={<RestaurantDetail />}
           />
           <Route path="/favorites" element={<Favorites />} />
+          <Route path='*' element={<NotFound />} />
         </Routes>
       </BrowserRouter>
       <Footer />

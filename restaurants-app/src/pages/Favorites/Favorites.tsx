@@ -20,10 +20,12 @@ const Favorites = function () {
         <span className="heading__title">My Favortite Restaurants</span>
       </div>
       <ul className="restaurant-list">
-        {favoritesList.length && (
+        {favoritesList.length ? (
           favoritesList.map((restaurant:Restaurant) => (
             <RestaurantCard key={restaurant?.id} restaurant={restaurant} />
           ))
+        ): (
+          <span className="error-msg">You don&apos;t have any favorite Restaurants</span>
         )}
       </ul>
     </>

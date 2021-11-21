@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import RestaurantCard from '../../components/RestaurantCard/RestaurantCard';
-import { loadRestaurants } from '../../redux/actions/actionCreators';
+import { loadRestaurants, loadFavorites } from '../../redux/actions/actionCreators';
 import Restaurant from '../../interfaces/restaurantInterface';
 import './styles.scss';
 
@@ -12,6 +12,7 @@ const Dashboard = function () {
 
   useEffect(() => {
     dispatch(loadRestaurants());
+    dispatch(loadFavorites());
   }, []);
 
   return (

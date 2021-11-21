@@ -6,22 +6,47 @@
     box-sizing: border-box;
 }
 
-    body{
-        font-family: 'Poppins', Arial, sans-serif;
-    }
+body{
+    font-family: 'Poppins', Arial, sans-serif;
+}
 
-    .restaurant-list{
-        padding: 0 7%;
-        width: 100%;
-        display: flex;
-        flex-wrap:wrap;
-    }
+.restaurant-list{
+    padding: 0 7%;
+    width: 100%;
+    display: flex;
+    flex-wrap:wrap;
+}
 
-    .heading{
-        width: 85%;
-        margin: 0 8%;
-        margin-top: 30px;
-        border-width: 1px;
-        border-style: none none solid none;
-        border-color: $primary-color;
+.heading{
+    width: 85%;
+    margin: 0 8%;
+    margin-top: 30px;
+    border-width: 1px;
+    border-style: none none solid none;
+    border-color: $primary-color;
+}
+
+.error-msg{
+    display: flex;
+    margin : 20px auto;
+}
+
+.button{
+    &:hover{
+        transition: margin 0.5s;
+        margin-top: -0.5%; 
+        cursor: pointer;
     }
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 100;
+    width: 139px;
+    height: 55px;
+    border: none;
+    background: #90CCF4;
+    box-shadow: 1px 4px 10px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    display: block;
+    margin : 10px auto;
+}
+    

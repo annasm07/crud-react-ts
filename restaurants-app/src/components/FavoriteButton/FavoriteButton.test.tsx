@@ -5,10 +5,10 @@ import { BrowserRouter } from 'react-router-dom';
 import Restaurant from '../../interfaces/restaurantInterface';
 import {
     addToFavorites,
-    deleteFromFavorites,
   } from '../../redux/actions/actionCreators';
 
 jest.mock('../../redux/actions/actionCreators');
+jest.mock('../../services/isFavorite');
 
 describe('Given the FavButton component', () => {
     const initialState ={
@@ -56,10 +56,9 @@ describe('Given the FavButton component', () => {
             render(<BrowserRouter><FavoriteButton restaurant={restaurant}/></BrowserRouter>, initialState);
         })
         test('Then name of restaurant should be rendered', () => {
-            const isFavorite = jest.fn().mockReturnValue(true)
             const favouriteButton = screen.getByRole('button');
             fireEvent.click(favouriteButton);
-            expect(deleteFromFavorites).toHaveBeenCalled();
+            expect(addToFavorites).toHaveBeenCalled();
         });
     });
 });

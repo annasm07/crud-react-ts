@@ -12,10 +12,10 @@ const RestaurantCard = function ({ restaurant } : {restaurant:Restaurant}) {
         <div className="restaurant-card__information">
           <span className="information__name">
             {restaurant.name}
-            {' '}
-            {restaurant.id}
           </span>
           <span className="information__review">
+            Score:
+            {' '}
             {calculateMedium(restaurant.reviews)}
             {' '}
             / 5
