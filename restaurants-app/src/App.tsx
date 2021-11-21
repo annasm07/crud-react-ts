@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-} from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Dashboard from './pages/Dasboard/Dashboard';
@@ -20,7 +16,10 @@ const App = function () {
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/restaurants" element={<RestaurantsList />} />
-          <Route path="/restaurant/:restaurantId" element={<RestaurantDetail />} />
+          <Route
+            path="/restaurant/:restaurantId"
+            element={<RestaurantDetail />}
+          />
           <Route path="/favorites" element={<Favorites />} />
         </Routes>
       </BrowserRouter>

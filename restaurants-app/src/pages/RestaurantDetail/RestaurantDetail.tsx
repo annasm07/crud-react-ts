@@ -55,17 +55,18 @@ const RestaurantDetail = function () {
 
         <div className="information-list">
           <ul>
-            <li><span>{currentRestaurant[0]?.food_type}</span></li>
-            <li>{currentRestaurant[0]?.address.map((item:string) => <span>{item}</span>)}</li>
-            <li><span>{reviewsMedium}</span></li>
-            <li>
-              {/* {' '}
-            <input
-              className="search-input"
-              type="text"
-              placeholder="Add a personal comment..."
-              onChange={(event) => handleCommentChangeInput(event)}
-            /> */}
+            <li key={currentRestaurant[0]?.food_type}>
+              <span>{currentRestaurant[0]?.food_type}</span>
+            </li>
+            <li key="address">{currentRestaurant[0]?.address.map((item:string) => <span key={item}>{item}</span>)}</li>
+            <li key="review">
+              <span>
+                Costumer scores
+                {' '}
+                {reviewsMedium}
+                {' '}
+                / 5
+              </span>
             </li>
           </ul>
           <form action="#" method="get">
