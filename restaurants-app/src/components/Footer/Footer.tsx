@@ -4,7 +4,7 @@ import './styles.scss';
 const Footer = function () {
   return (
     <footer className="footer">
-      <span>Footer of application</span>
+      <span>All rights reserved - Anna Sala 2021</span>
     </footer>
   );
 };

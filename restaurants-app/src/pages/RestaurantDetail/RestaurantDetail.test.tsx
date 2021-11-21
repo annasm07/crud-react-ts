@@ -4,6 +4,7 @@ import RestaurantDetail from './RestaurantDetail';
 import { BrowserRouter } from 'react-router-dom';
 import Restaurant from '../../interfaces/restaurantInterface';
 
+jest.mock('../../services/isFavorite');
 
 describe('Given the RestaurantCard', () => {
     const initialState ={

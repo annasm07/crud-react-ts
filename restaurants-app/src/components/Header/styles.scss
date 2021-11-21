@@ -11,12 +11,13 @@
         padding-top: 10px;
     }
     &__navigation{
-        width: 30%;
+        min-width: 30%;
         display: flex;
         justify-content: space-around;
         &--link{
             text-decoration: none;
             color: $dark-color;
+            margin: 0 10px;
             &:hover{
                 color: $extra-color-dark;
             }
