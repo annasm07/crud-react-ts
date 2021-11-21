@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Restaurant from '../../interfaces/restaurantInterface';
 import {
@@ -9,9 +9,11 @@ import {
 import './styles.scss';
 import calculateMedium from '../../services/calculateMedium';
 import FavoritesButton from '../../components/FavoriteButton/FavoriteButton';
+import isFavorite from '../../services/isFavorite';
 
 const RestaurantDetail = function () {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { restaurantId } = useParams();
 
   const restaurants = useSelector((store:any) => store.restaurants);
@@ -24,10 +26,6 @@ const RestaurantDetail = function () {
     (restaurant:Restaurant) => restaurant.id === Number(restaurantId),
   );
 
-  function isFavorite(restID:number) {
-    return favorites.some(({ id }:{id:number}) => id === restID);
-  }
-
   useEffect(() => {
     setreviewsMedium(Number(calculateMedium(currentRestaurant[0]?.reviews)));
   }, [restaurants]);
@@ -37,7 +35,7 @@ const RestaurantDetail = function () {
       ...currentRestaurant[0], reviews: [...currentRestaurant[0].reviews, Number(formReview)],
     };
     dispatch(updateRestaurant(updatedRestaurant));
-    if (isFavorite(currentRestaurant[0].id)) dispatch(updateRestaurantFavs(updatedRestaurant));
+    if (isFavorite(currentRestaurant[0].id, favorites)) dispatch(updateRestaurantFavs(updatedRestaurant));
   };
 
   return (
@@ -56,12 +54,12 @@ const RestaurantDetail = function () {
         <div className="information-list">
           <ul>
             <li key={currentRestaurant[0]?.food_type}>
-              <span>{currentRestaurant[0]?.food_type}</span>
+              <span>Food type: {currentRestaurant[0]?.food_type}</span>
             </li>
-            <li key="address">{currentRestaurant[0]?.address.map((item:string) => <span key={item}>{item}</span>)}</li>
+            <li key="address">Address: {currentRestaurant[0]?.address.map((item:string) => <span key={item}>{item}</span>)}</li>
             <li key="review">
               <span>
-                Costumer scores
+                Costumer scores:
                 {' '}
                 {reviewsMedium}
                 {' '}
@@ -69,10 +67,11 @@ const RestaurantDetail = function () {
               </span>
             </li>
           </ul>
-          <form action="#" method="get">
+          <form action="#" method="get" className="review-form">
 
-            <span>Add a Review</span>
-            <select name="review" id="review" onChange={(event) => setnewReview(event?.target.value)}>
+            <span className="review-form__label">Add a Review</span>
+            <div className="review-form__select">
+            <select className="select-input" name="review" id="review" onChange={(event) => setnewReview(event?.target.value)}>
               <option key="option-0" value="">--Please choose an option--</option>
               <option key="option-1" value="1">1</option>
               <option key="option-2" value="2">2</option>
@@ -81,13 +80,16 @@ const RestaurantDetail = function () {
               <option key="option-5" value="5">5</option>
             </select>
             <input
+              className="button"
               type="button"
               value="Submit"
               onClick={() => handleReviewSent(newReview)}
             />
+            </div>
           </form>
         </div>
       </div>
+      <button onClick={() => navigate(-1)} className="button">Go Back</button>
     </>
   );
 };
