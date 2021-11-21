@@ -9,7 +9,7 @@ const RestaurantsList = function () {
   const [filteredList, setfilteredList] = useState(allRestaurants);
 
   const filterList = (searchValue: string) => {
-    setfilteredList(allRestaurants.reduce((acc:any, restaurant:any) => {
+    setfilteredList(allRestaurants.reduce((acc:Restaurant[], restaurant:Restaurant) => {
       if (restaurant.name.toLocaleLowerCase().includes(
         searchValue.trim().toLocaleLowerCase(),
       )) return [...acc, restaurant];

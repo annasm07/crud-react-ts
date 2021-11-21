@@ -7,7 +7,7 @@ const apiURL = process.env.REACT_APP_APIURL;
 
 export function loadRestaurants() {
   return async (dispatch: AppDispatch) => {
-    const { data } = await axios(`${apiURL}/restaurants`);
+    const { data } = await axios.get(`${apiURL}/restaurants`);
     dispatch({
       type: actionTypes.LOAD_ALL_RESTAURANTS,
       restaurants: data,
@@ -17,7 +17,7 @@ export function loadRestaurants() {
 
 export function loadFavorites() {
   return async (dispatch: AppDispatch) => {
-    const { data } = await axios(`${apiURL}/favorites`);
+    const { data } = await axios.get(`${apiURL}/favorites`);
     dispatch({
       type: actionTypes.LOAD_ALL_FAVORITES,
       favorites: data,
