@@ -3,6 +3,8 @@ export interface actionTypesInterface {
     ADD_TO_FAVORITES: string,
     LOAD_ALL_FAVORITES:string,
     DELETE_FROM_FAVORITES: string,
+    UPDATE_RESTAURANT: string,
+    UPDATE_RESTAURANT_FAV: string,
     }
 
 const restaurantsActionTypes: actionTypesInterface = {
@@ -10,6 +12,8 @@ const restaurantsActionTypes: actionTypesInterface = {
   ADD_TO_FAVORITES: 'ADD_TO_FAVORITES',
   LOAD_ALL_FAVORITES: 'LOAD_ALL_FAVORITES',
   DELETE_FROM_FAVORITES: 'DELETE_FROM_FAVORITES',
+  UPDATE_RESTAURANT: 'UPDATE_RESTAURANT',
+  UPDATE_RESTAURANT_FAV: 'UPDATE_RESTAURANT_FAV',
 };
 
 export default restaurantsActionTypes;

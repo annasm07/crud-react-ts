@@ -1,0 +1,16 @@
+.search-input{
+    border: none;
+    background: #FAFAFA;
+    box-shadow: 1px 4px 10px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    width: 25vw;
+    padding: 15px;
+    min-width: 300px;
+    justify-content: center;
+    display: block;
+    margin : 5px auto;
+    margin-top: 20px;
+    &:focus{
+        outline: none;
+    }
+}
