@@ -3,10 +3,13 @@
 .header{
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items:center;
     background-color: #ECECEC;
     color: $dark-color;
     padding: 10px 30px;
+    &__logo{
+        padding-top: 10px;
+    }
     &__navigation{
         width: 30%;
         display: flex;

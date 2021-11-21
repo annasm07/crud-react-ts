@@ -18,6 +18,15 @@ function favoritesReducer(state = [], action: AnyAction) {
       newState = state.filter((restaurant: Restaurant) => restaurant.id !== action.id);
       break;
 
+    case actionTypes.UPDATE_RESTAURANT_FAV:
+      newState = state.map((restaurant: Restaurant) => (
+        (restaurant.id === action.updatedRestaurant.id
+          ? action.updatedRestaurant
+          : restaurant
+        )
+      ));
+      break;
+
     default:
       newState = state;
       break;

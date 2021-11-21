@@ -6,7 +6,7 @@
     font-size: 18px;
     justify-content: center;
     list-style: none;
-    margin: 3% 0;
+    margin: 3% 1%;
     width: 300px;
     position: relative;
     &__item{
@@ -15,7 +15,6 @@
         overflow: hidden;
         height: 200px;
         display: inline-block;
-        margin: 1%;
         text-align: center;
         width: 300px;
         color: $dark-color;
@@ -23,6 +22,7 @@
             display: flex;
             flex-direction: column;
             position: absolute;
+            border-radius: 20px 20px;
             padding: 5px 10px;
             padding-left: 20px;
             bottom:0;
@@ -55,6 +55,6 @@
     }
     &:hover{
         transition: margin 0.5s;
-        margin: 2% 0; 
+        margin-top: 2%; 
     }
 }

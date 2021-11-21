@@ -44,3 +44,23 @@ export function deleteFromFavorites(id:number) {
     });
   };
 }
+
+export function updateRestaurant(restaurant : Restaurant) {
+  return async (dispatch: AppDispatch) => {
+    const { data } = await axios.put(`${apiURL}/restaurants/${restaurant.id}`, restaurant);
+    dispatch({
+      type: actionTypes.UPDATE_RESTAURANT,
+      updatedRestaurant: data,
+    });
+  };
+}
+export function updateRestaurantFavs(restaurant : Restaurant) {
+  return async (dispatch: AppDispatch) => {
+    await axios.put(`${apiURL}/restaurants/${restaurant.id}`, restaurant);
+    const { data } = await axios.put(`${apiURL}/favorites/${restaurant.id}`, restaurant);
+    dispatch({
+      type: actionTypes.UPDATE_RESTAURANT_FAV,
+      updatedRestaurant: data,
+    });
+  };
+}

@@ -2,13 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Restaurant from '../../interfaces/restaurantInterface';
 import './styles.scss';
+import calculateMedium from '../../services/calculateMedium';
 
 const RestaurantCard = function ({ restaurant } : {restaurant:Restaurant}) {
-  function calculateMedium(reviewsArray:number[]) {
-    const reviewsSum = reviewsArray.reduce((acc:number, review:number) => (acc + review));
-    return (reviewsSum / reviewsArray.length).toFixed(1);
-  }
-
   return (
     <li className="restaurant-card">
       <Link to={`/restaurant/${restaurant.id}`} className="restaurant-card__item">
@@ -19,7 +15,11 @@ const RestaurantCard = function ({ restaurant } : {restaurant:Restaurant}) {
             {' '}
             {restaurant.id}
           </span>
-          <span className="information__review">{calculateMedium(restaurant.reviews)}</span>
+          <span className="information__review">
+            {calculateMedium(restaurant.reviews)}
+            {' '}
+            / 5
+          </span>
         </div>
       </Link>
     </li>
