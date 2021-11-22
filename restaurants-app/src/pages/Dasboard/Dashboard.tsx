@@ -13,7 +13,7 @@ const Dashboard = function () {
   useEffect(() => {
     dispatch(loadRestaurants());
     dispatch(loadFavorites());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

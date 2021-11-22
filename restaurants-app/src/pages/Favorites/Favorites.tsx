@@ -12,7 +12,7 @@ const Favorites = function () {
 
   useEffect(() => {
     dispatch(loadFavorites());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

@@ -28,7 +28,7 @@ const RestaurantDetail = function () {
 
   useEffect(() => {
     setreviewsMedium(Number(calculateMedium(currentRestaurant[0]?.reviews)));
-  }, [restaurants]);
+  }, [restaurants, currentRestaurant]);
 
   const handleReviewSent = (formReview: string) => {
     const updatedRestaurant = {
@@ -56,7 +56,7 @@ const RestaurantDetail = function () {
             <li key={currentRestaurant[0]?.food_type}>
               <span>Food type: {currentRestaurant[0]?.food_type}</span>
             </li>
-            <li key="address">Address: {currentRestaurant[0]?.address.map((item:string) => <span key={item}>{item}</span>)}</li>
+            <li key="address">Address: {currentRestaurant[0]?.address.map((item:string) => <span key={item}>{item} </span>)}</li>
             <li key="review">
               <span>
                 Costumer scores:
