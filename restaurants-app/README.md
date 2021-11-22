@@ -1,23 +1,54 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 align="center">SEAT : Code</h1>
+<h3 align="center">Frontend Challenge- React with Typescript</h3>
 
-## Available Scripts
 
-In the project directory, you can run:
+## Steps to run the application 
+1. Clone the repository into your local 
+2. Add .env file at the root of the project with the following content:
 
-### `npm start`
+    ```
+    REACT_APP_APIURL=<api url here>
+    ```
+### On a terminal, in the root directory run:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+3. run  
+    ```
+    yarn install
+    ```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+    This will create a node_modules folder with all the dependencies
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+If you don't have json-server installed run 
+```
+ npm install -g json-server
+ ``` 
 
-### `json-server --watch data/db.json --port 3004`
-Starts mocked api created with JsonServer in port 3004. 
+### Open a new terminal on root directory to run:
+4. 
+    ```
+    json-server --watch <PATH>/data/db.json --port 3004
+    ```
+    
+    `<PATH>/data/db.json` will be the path to db.json on your local computer
+    Starts mocked api created with JsonServer in port 3004. 
+
+5. 
+    ```
+    yarn start
+    ```
+
+    It will compile the application into the port 3000
+    
+    Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+
+## Other Available Scripts
+
+In the project directory, you can also run:
+
+### `yarn test`
+
+Launches the test runner in the interactive watch mode.
+
