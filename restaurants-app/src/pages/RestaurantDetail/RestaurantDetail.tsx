@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { Rating } from 'react-simple-star-rating'
 import Restaurant from '../../interfaces/restaurantInterface';
 import {
   updateRestaurant,
@@ -19,7 +20,7 @@ const RestaurantDetail = function () {
   const restaurants = useSelector((store:any) => store.restaurants);
   const favorites = useSelector((store:any) => store.favorites);
 
-  const [newReview, setnewReview] = useState<string>('');
+  const [rating, setRating] = useState(0)
   const [reviewsMedium, setreviewsMedium] = useState<number>(0);
 
   const currentRestaurant = restaurants.filter(
@@ -30,13 +31,17 @@ const RestaurantDetail = function () {
     setreviewsMedium(Number(calculateMedium(currentRestaurant[0]?.reviews)));
   }, [restaurants, currentRestaurant]);
 
-  const handleReviewSent = (formReview: string) => {
+  const handleReviewSent = (formReview: number) => {
     const updatedRestaurant = {
-      ...currentRestaurant[0], reviews: [...currentRestaurant[0].reviews, Number(formReview)],
+      ...currentRestaurant[0], reviews: [...currentRestaurant[0].reviews, formReview],
     };
     dispatch(updateRestaurant(updatedRestaurant));
     if (isFavorite(currentRestaurant[0].id, favorites)) dispatch(updateRestaurantFavs(updatedRestaurant));
   };
+
+  const handleRating = (rate: number) => {
+    setRating((rate/10)/2)
+    }
 
   return (
     <>
@@ -71,19 +76,17 @@ const RestaurantDetail = function () {
 
             <span className="review-form__label">Add a Review</span>
             <div className="review-form__select">
-            <select className="select-input" name="review" id="review" onChange={(event) => setnewReview(event?.target.value)}>
-              <option key="option-0" value="">--Please choose an option--</option>
-              <option key="option-1" value="1">1</option>
-              <option key="option-2" value="2">2</option>
-              <option key="option-3" value="3">3</option>
-              <option key="option-4" value="4">4</option>
-              <option key="option-5" value="5">5</option>
-            </select>
+            <Rating
+          onClick={handleRating}
+          allowHalfIcon = {true}
+          size = {30}
+          ratingValue={Number(reviewsMedium)}
+      />
             <input
               className="button"
               type="button"
               value="Submit"
-              onClick={() => handleReviewSent(newReview)}
+              onClick={() => handleReviewSent(rating)}
             />
             </div>
           </form>
