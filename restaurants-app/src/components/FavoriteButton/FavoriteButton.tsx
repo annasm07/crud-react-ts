@@ -9,8 +9,12 @@ import {
 } from '../../redux/actions/actionCreators';
 import isFavorite from '../../services/isFavorite';
 
+interface RootState {
+  favorites: Restaurant[]
+}
+
 const FavoritesButton = function ({ restaurant } : {restaurant:Restaurant}) {
-  const favorites = useSelector((store:any) => store.favorites);
+  const favorites = useSelector((store:RootState) => store.favorites);
   const dispatch = useDispatch();
 
   function changeFavourite(restID:number) {

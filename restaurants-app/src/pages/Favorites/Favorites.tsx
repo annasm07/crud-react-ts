@@ -5,10 +5,14 @@ import RestaurantCard from '../../components/RestaurantCard/RestaurantCard';
 import { loadFavorites } from '../../redux/actions/actionCreators';
 import './styles.scss';
 
+interface RootState {
+  favorites: Restaurant[]
+}
+
 const Favorites = function () {
   const dispatch = useDispatch();
 
-  const favoritesList = useSelector((store:any) => store.favorites);
+  const favoritesList = useSelector((store:RootState) => store.favorites);
 
   useEffect(() => {
     dispatch(loadFavorites());

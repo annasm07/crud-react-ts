@@ -12,13 +12,18 @@ import calculateMedium from '../../services/calculateMedium';
 import FavoritesButton from '../../components/FavoriteButton/FavoriteButton';
 import isFavorite from '../../services/isFavorite';
 
+interface RootState {
+  restaurants: Restaurant[], 
+  favorites: Restaurant[]
+}
+
 const RestaurantDetail = function () {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { restaurantId } = useParams();
 
-  const restaurants = useSelector((store:any) => store.restaurants);
-  const favorites = useSelector((store:any) => store.favorites);
+  const restaurants = useSelector((store:RootState) => store.restaurants);
+  const favorites = useSelector((store:RootState) => store.favorites);
 
   const [rating, setRating] = useState(0)
   const [reviewsMedium, setreviewsMedium] = useState<number>(0);

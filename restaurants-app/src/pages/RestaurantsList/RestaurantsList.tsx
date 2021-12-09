@@ -4,9 +4,13 @@ import Restaurant from '../../interfaces/restaurantInterface';
 import RestaurantCard from '../../components/RestaurantCard/RestaurantCard';
 import './styles.scss';
 
+interface RootState {
+  restaurants: Restaurant[], 
+}
+
 const RestaurantsList = function () {
 
-  const allRestaurants = useSelector((store:any) => store.restaurants);
+  const allRestaurants = useSelector((store:RootState) => store.restaurants);
   const [filteredList, setfilteredList] = useState<Restaurant[]>(allRestaurants);
 
   const sortArray = (type:any) => {

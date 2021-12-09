@@ -5,9 +5,13 @@ import { loadRestaurants, loadFavorites } from '../../redux/actions/actionCreato
 import Restaurant from '../../interfaces/restaurantInterface';
 import './styles.scss';
 
+interface RootState {
+  restaurants: Restaurant[], 
+}
+
 const Dashboard = function () {
   const dispatch = useDispatch();
-  const allRestaurants = useSelector((store:any) => store.restaurants);
+  const allRestaurants = useSelector((store:RootState) => store.restaurants);
   const dashborardRestaurants = allRestaurants.slice(0, 4);
 
   useEffect(() => {
